@@ -11,6 +11,5 @@ userController = boundInstance(userController)
 router.post('/', userController.createUser)
 router.get('/:id', authGuard, userController.getUserById)
 router.put('/:id', authGuard, userController.updateUserById)
-router.delete('/:id', authGuard, userController.deleteUserById)
 
 module.exports = router

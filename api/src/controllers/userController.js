@@ -33,11 +33,6 @@ class UserController {
     const user = await this.userService.updateById(req.params.id, req.body)
     res.json(user)
   }
-
-  async deleteUserById(req, res) {
-    const user = await this.userService.deleteById(req.params.id)
-    res.json(user)
-  }
 }
 
 module.exports = UserController

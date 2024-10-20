@@ -83,7 +83,10 @@ export default function Header() {
               tabIndex={0}
               className='dropdown-content z-[1] text-sm p-2 space-y-1 shadow bg-base-100 w-52'
             >
-              <div className='p-2 hover:bg-base-200 hover:text-primary cursor-pointer transform active:scale-105'>
+              <div
+                className='p-2 hover:bg-base-200 hover:text-primary cursor-pointer transform active:scale-105'
+                onClick={() => navigate('/profile')}
+              >
                 Your Profile
               </div>
               <div

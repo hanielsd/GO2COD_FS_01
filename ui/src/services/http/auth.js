@@ -9,7 +9,7 @@ const auth = {
       } = await apiService.request(payload)
       tokenService.saveToken(token)
       apiService.setHeader()
-
+      console.log({ user })
       return { isError: false, user }
     } catch (err) {
       return { isError: true, error: err }
