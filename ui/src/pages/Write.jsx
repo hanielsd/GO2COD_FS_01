@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import BaseInput from '../components/controlled/BaseInput'
 import { useState } from 'react'
 import { http } from '../services/http/http'
@@ -6,12 +5,19 @@ import Spinner from '../components/collection/Spinner'
 import BaseTextArea from '../components/controlled/BaseTextArea'
 
 export default function Write() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-    reset,
-  } = useForm()
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
+  const [initial, setInitial] = useState(true)
+
+  const handleSubmit = (cb) => {
+    return () => {
+      setInitial(false)
+      let invalid = !title || !body
+      if (invalid) return
+
+      cb({ title, body })
+    }
+  }
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -20,6 +26,7 @@ export default function Write() {
   const handlePublish = async (data) => {
     if (loading) return
 
+    setLoading(true)
     const response = await http.request({
       method: 'post',
       url: 'posts',
@@ -28,7 +35,6 @@ export default function Write() {
 
     if (!response.isError) {
       setSuccess(true)
-      reset({ title: '', body: '' })
     } else setError('Something went wrong, try again later!')
     setLoading(false)
   }
@@ -49,19 +55,17 @@ export default function Write() {
             <BaseInput
               label='Title'
               placeholder='Enter title'
-              {...register('title', {
-                required: 'Title is required',
-              })}
-              error={errors.title && errors.title.message}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              error={title || initial ? '' : 'Title is required'}
             />
             <BaseTextArea
               label='Body'
               placeholder='Write the content here...'
               rows={3}
-              {...register('body', {
-                required: 'Body is required',
-              })}
-              error={errors.body && errors.body.message}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              error={body || initial ? '' : 'Body is required'}
             />
           </div>
 
