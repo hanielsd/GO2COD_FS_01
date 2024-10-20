@@ -1,0 +1,26 @@
+
+.tippy-box[data-theme~='h-light'] {
+  background-color: white; /* Set the background color of the tooltip container */
+  color: black; /* Set the text color of the tooltip container */
+  box-shadow: 0px 10px 40px #ccc;
+  transform-origin: center; /* Set the transform origin for scaling */
+  transition: transform 0.1s ease; /* Set the transition for scaling */
+}
+
+
+.tippy-box[data-theme~='h-light'] > .tippy-content {
+  padding: 0;
+}
+
+
+.tippy-box[data-theme~='h-light'][data-state='hidden'] {
+  transform: scale(0); /* Initial scale when hidden */
+}
+
+.tippy-box[data-theme~='h-light'][data-state='visible'] {
+  transform: scale(1); /* Scale to normal size when visible */
+}
+
+.tippy-box[data-theme~='h-light'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: #fff;
+}
