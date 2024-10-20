@@ -10,6 +10,7 @@ export default function Write() {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm()
 
   const [loading, setLoading] = useState(false)
@@ -27,6 +28,7 @@ export default function Write() {
 
     if (!response.isError) {
       setSuccess(true)
+      reset({ title: '', body: '' })
     } else setError('Something went wrong, try again later!')
     setLoading(false)
   }
