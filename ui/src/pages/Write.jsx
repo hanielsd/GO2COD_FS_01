@@ -34,6 +34,7 @@ export default function Write() {
   return (
     <div className='flex justify-center items-center min-h-full py-2 bg-gray-100'>
       <div className='w-3/5 bg-white rounded-lg px-6 py-6 pb-10 shadow-2xl'>
+        <div className='text-lg uppercase pb-4'>Create Post</div>
         <div className='space-y-3'>
           <div className='space-y-2'>
             {error && <div className='text-red-600 text-sm'>{error}</div>}
