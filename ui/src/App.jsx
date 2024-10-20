@@ -9,6 +9,7 @@ import OnlyWhenLoggedOut from './components/route-hocs/OnlyWhenLoggedOut'
 import Toast from './components/collection/Toast'
 import _401Handler from './components/auth/_401Handler'
 import Dashboard from './pages/Dashboard'
+import Signup from './pages/publik/Signup'
 
 function App() {
   const { theme } = useSelector((state) => state.theme)
@@ -31,6 +32,10 @@ function App() {
         <Route
           path='login'
           element={<OnlyWhenLoggedOut component={<Login />} />}
+        />
+        <Route
+          path='signup'
+          element={<OnlyWhenLoggedOut component={<Signup />} />}
         />
 
         <Route path='*' element={<OnlyWhenLoggedOut component={<Login />} />} />
