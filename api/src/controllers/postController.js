@@ -6,7 +6,10 @@ class PostController {
   }
 
   async createPost(req, res) {
-    const post = await this.postService.create(req.body, req)
+    const post = await this.postService.create(
+      { ...req.body, author: req.userId },
+      req
+    )
     res.status(201).json(post)
   }
 }
