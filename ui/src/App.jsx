@@ -11,6 +11,7 @@ import _401Handler from './components/auth/_401Handler'
 import Dashboard from './pages/Dashboard'
 import Signup from './pages/publik/Signup'
 import Profile from './pages/Profile'
+import Write from './pages/Write'
 
 function App() {
   const { theme } = useSelector((state) => state.theme)
@@ -29,6 +30,7 @@ function App() {
           path=''
           element={<Protected component={<Dashboard />} />}
         />
+        <Route path='write' element={<Protected component={<Write />} />} />
         <Route path='profile' element={<Protected component={<Profile />} />} />
 
         <Route
