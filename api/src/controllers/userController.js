@@ -29,11 +29,6 @@ class UserController {
     res.json(user)
   }
 
-  async getAllUsers(req, res) {
-    const users = await this.userService.findAll(req)
-    res.json(users)
-  }
-
   async updateUserById(req, res) {
     const user = await this.userService.updateById(req.params.id, req.body)
     res.json(user)
