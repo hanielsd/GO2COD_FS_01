@@ -5,6 +5,7 @@ import auth from '../../services/http/auth'
 import { useDispatch } from 'react-redux'
 import { setStatus, setUser } from '../../store/slices/authSlice'
 import Logo from '../../assets/logo/transparent-logo.png'
+import Spinner from '../../components/collection/Spinner'
 
 export default function Login() {
   const dispatch = useDispatch()
@@ -19,6 +20,8 @@ export default function Login() {
   const [error, setError] = useState('')
 
   const handleLogin = async (data) => {
+    if (loading) return
+
     setLoading(true)
     const response = await auth.signIn({
       method: 'post',
@@ -34,8 +37,8 @@ export default function Login() {
     setLoading(false)
   }
   return (
-    <div className='flex justify-center items-center h-full overflow-y-auto bg-gray-100'>
-      <div className='w-2/5 bg-white rounded-lg px-6 py-6 pb-10 shadow-2xl'>
+    <div className='flex justify-center items-center h-full py-2 bg-gray-100'>
+      <div className='w-2/5 bg-white -mt-10 rounded-lg px-6 py-6 pb-10 shadow-2xl'>
         <div className='flex items-center justify-center pb-6'>
           <img src={Logo} className='h-14' />
         </div>
@@ -69,6 +72,7 @@ export default function Login() {
               className='btn btn-block uppercase bg-primary text-white hover:bg-primary hover:text-white hover:opacity-75'
               onClick={handleSubmit(handleLogin)}
             >
+              {loading && <Spinner />}
               log in
             </button>
           </div>
