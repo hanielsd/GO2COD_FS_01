@@ -35,7 +35,7 @@ export default function Home() {
       setPosts(
         response.map(({ body, ...rest }) => ({
           ...rest,
-          body: truncateHTML(body, 80),
+          body: truncateHTML(body, 190),
         })),
       )
     else setError('Something went wrong, try again later')
@@ -45,5 +45,27 @@ export default function Home() {
   useEffect(() => {
     getPosts()
   }, [])
-  return <div>dashboard</div>
+  return (
+    <div className='flex justify-center py-4'>
+      <div className='w-1/2 space-y-4'>
+        {loading && <div className=''>Loading...</div>}
+        {posts &&
+          posts.map((post, index) => (
+            <>
+              {index > 0 && <hr key={index} />}
+
+              <div key={post._id} className='p-2 cursor-pointer group'>
+                <div className='flex space-x-2 items-center'>
+                  <div className='text-sm'>{post.author.firstName}</div>
+                </div>
+                <div className='text-xl font-medium group-hover:text-primary'>
+                  {post.title}
+                </div>
+                <div className='text-sm'>{post.body}</div>
+              </div>
+            </>
+          ))}
+      </div>
+    </div>
+  )
 }
