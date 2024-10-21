@@ -8,10 +8,10 @@ import OnlyWhenLoggedOut from './components/route-hocs/OnlyWhenLoggedOut'
 
 import Toast from './components/collection/Toast'
 import _401Handler from './components/auth/_401Handler'
-import Dashboard from './pages/Dashboard'
 import Signup from './pages/publik/Signup'
 import Profile from './pages/Profile'
 import Write from './pages/Write'
+import Home from './pages/Home'
 
 function App() {
   const { theme } = useSelector((state) => state.theme)
@@ -25,11 +25,7 @@ function App() {
 
       <Header />
       <Routes>
-        <Route
-          exact
-          path=''
-          element={<Protected component={<Dashboard />} />}
-        />
+        <Route exact path='' element={<Protected component={<Home />} />} />
         <Route path='write' element={<Protected component={<Write />} />} />
         <Route path='profile' element={<Protected component={<Profile />} />} />
 

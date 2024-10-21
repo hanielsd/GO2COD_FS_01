@@ -9,5 +9,6 @@ let controller = new PostController()
 controller = boundInstance(controller)
 
 router.post('/', authGuard, controller.createPost)
+router.get('/', controller.getPosts)
 
 module.exports = router

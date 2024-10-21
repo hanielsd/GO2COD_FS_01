@@ -12,6 +12,11 @@ class PostController {
     )
     res.status(201).json(post)
   }
+
+  async getPosts(req, res) {
+    const posts = await this.postService.findAll(req)
+    res.json(posts)
+  }
 }
 
 module.exports = PostController
