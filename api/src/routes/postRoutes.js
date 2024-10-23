@@ -10,5 +10,6 @@ controller = boundInstance(controller)
 
 router.post('/', authGuard, controller.createPost)
 router.get('/', controller.getPosts)
+router.get('/:id', controller.getPost)
 
 module.exports = router

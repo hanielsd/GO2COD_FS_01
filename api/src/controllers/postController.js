@@ -17,6 +17,11 @@ class PostController {
     const posts = await this.postService.findAll(req)
     res.json(posts)
   }
+
+  async getPost(req, res) {
+    const posts = await this.postService.findById(req.params.id, req)
+    res.json(posts)
+  }
 }
 
 module.exports = PostController
