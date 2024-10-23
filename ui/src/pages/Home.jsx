@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { http } from '../services/http/http'
+import Post from '../components/cards/Post'
 
 const truncateHTML = (htmlContent, maxLen = 30) => {
   const parser = new DOMParser()
@@ -53,16 +54,7 @@ export default function Home() {
           posts.map((post, index) => (
             <>
               {index > 0 && <hr key={index} />}
-
-              <div key={post._id} className='p-2 cursor-pointer group'>
-                <div className='flex space-x-2 items-center'>
-                  <div className='text-sm'>{post.author.firstName}</div>
-                </div>
-                <div className='text-xl font-medium group-hover:text-primary'>
-                  {post.title}
-                </div>
-                <div className='text-sm'>{post.body}</div>
-              </div>
+              <Post key={post._id} post={post} />
             </>
           ))}
       </div>
