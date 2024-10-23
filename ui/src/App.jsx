@@ -12,6 +12,7 @@ import Signup from './pages/publik/Signup'
 import Profile from './pages/Profile'
 import Write from './pages/Write'
 import Home from './pages/Home'
+import Read from './pages/Read'
 
 function App() {
   const { theme } = useSelector((state) => state.theme)
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route exact path='' element={<Protected component={<Home />} />} />
         <Route path='write' element={<Protected component={<Write />} />} />
+        <Route path='read/:id' element={<Protected component={<Read />} />} />
         <Route path='profile' element={<Protected component={<Profile />} />} />
 
         <Route
