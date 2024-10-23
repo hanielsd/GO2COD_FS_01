@@ -48,7 +48,7 @@ export default function Home() {
   }, [])
   return (
     <div className='flex justify-center py-4'>
-      <div className='w-1/2 space-y-4'>
+      <div className='w-1/2 space-y-3'>
         {loading && <div className=''>Loading...</div>}
         {posts &&
           posts.map((post, index) => (
